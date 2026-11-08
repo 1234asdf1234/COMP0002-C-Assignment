@@ -2,7 +2,7 @@
 #include "bot.h"
 #include "constants.h"
 #include <locale.h> // square workaround from https://stackoverflow.com/a/72810263
-
+#include <stdlib.h> // for system()
 #include <stdio.h>
 
 Blocktype maze[SIDE][SIDE];
@@ -56,7 +56,8 @@ const char* bot_char(Bot *bot) {
 // test function to print maze in command line.
 void draw_maze_cmd(Bot *bot) {
     Blocktype buf;
-    setlocale(LC_CTYPE, "en_US.UTF-8"); // 
+    setlocale(LC_CTYPE, "en_US.UTF-8");
+    system("clear");    
     for (int i = 0; i < SIDE; i++) {
         for (int j = 0; j < SIDE; j++) {
             if (same_point(bot->p, (Point){j, i})) {
@@ -68,13 +69,5 @@ void draw_maze_cmd(Bot *bot) {
         }
         puts("");
     }
-}
-
-static int test_maze(void) {
-    read_maze("sample_maze.txt");
-    draw_maze();
-    bot_prepare();
-    draw_bot((Bot){(Point){0, 1}, RIGHT});
-    return 0;
 }
 
