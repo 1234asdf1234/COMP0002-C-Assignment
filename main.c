@@ -4,7 +4,7 @@
 #include "maze.h"
 
 int main() {
-    read_maze("sample_maze.txt");
+    generate_maze((Point){0, 1});
     draw_maze();
     bot_prepare();
     Bot bot = {(Point){0, 1}, RIGHT};

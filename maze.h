@@ -3,12 +3,14 @@
 
 #include "constants.h"
 
-#define SIDE 11
+#define SIDE 15
 #define BLOCKSIZE 20
 
 extern Blocktype maze[SIDE][SIDE];
 
 void read_maze(const char *path);
 void draw_maze();
+
+void generate_maze(Point start);
 
 #endif
