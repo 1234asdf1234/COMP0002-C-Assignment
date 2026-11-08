@@ -15,4 +15,7 @@ void right(Bot *bot);
 int at_marker(Bot *bot);
 int can_move_forward(Bot *bot);
 
+// non-standard helper for recursive search
+int at_start(Bot *bot);
+
 #endif

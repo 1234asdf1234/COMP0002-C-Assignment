@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define SIDE 15
+#define SIDE 11
 #define BLOCKSIZE 20
 
 extern Blocktype maze[SIDE][SIDE];
