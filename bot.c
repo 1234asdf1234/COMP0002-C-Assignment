@@ -3,13 +3,15 @@
 #include "constants.h"
 #include "graphics.h"
 #include <math.h>
-#include <stdio.h>
 
 // M_PI is not standard C so define our own
 #define PI 3.1415926535
 
 // polygon can be customised
 #define POLYGON 3
+
+// state to determine if bot has left from the start
+static int bot_started = 0;
 
 static Position rotate(float length, float angle, Position pos) {
     angle = angle * (PI / 180.0);
@@ -103,6 +105,15 @@ void right(Bot *bot) {
 
 int at_marker(Bot *bot) {
     return maze[bot->p.y][bot->p.x] == END;
+}
+
+// helper function to terminate recursive searching
+int at_start(Bot *bot) {
+    if (!bot_started) {
+        bot_started = 1;
+        return 0;
+    }
+    return maze[bot->p.y][bot->p.x] == START;
 }
 
 int can_move_forward(Bot *bot) {
